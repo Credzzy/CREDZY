@@ -1,0 +1,31 @@
+package com.crdz.credzy.model;
+
+import lombok.Data;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Table
+@Entity
+@Data
+public class Merchants {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long id;
+    private Date addedOn;
+    private long cityId;
+    private long stateId;
+    private long categoryID;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] logo;
+    private String firmName;
+    private String contactPerson;
+    private String facebook;
+    private String instagram;
+    private String mobile;
+    private String whatsapp;
+    private String address;
+    private String gmap;
+}
