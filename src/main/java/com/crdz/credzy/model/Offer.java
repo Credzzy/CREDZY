@@ -9,7 +9,7 @@ import java.util.List;
 @Table
 @Entity
 @Data
-public class Offers {
+public class Offer {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,8 +19,8 @@ public class Offers {
     private long merchantId;
     private String offerName;
     private String offerImg;
-    private String minAmount;
-    private String totalAmount;
+    private long offerAmount;
+    private long totalAmount;
     private Date validTill;
     private List<String> termsAndConditions;
 }

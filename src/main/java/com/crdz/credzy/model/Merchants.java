@@ -16,7 +16,7 @@ public class Merchants {
     private Date addedOn;
     private long cityId;
     private long stateId;
-    private long categoryID;
+    private long categoryId;
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] logo;

@@ -24,6 +24,7 @@ public class Customer {
     private String name;
     private String mobileNo;
     private long credzyPoints;
+    private long subscriptionId;
     private LocalDate validityTill;
     private String email;
     private String gender;
