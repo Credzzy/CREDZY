@@ -6,11 +6,9 @@ import com.crdz.credzy.repository.CustomerRepository;
 import com.crdz.credzy.repository.OfferRepository;
 import com.crdz.credzy.repository.OfferSubscriptionMappingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -32,6 +30,9 @@ public class OfferController {
         Customer customer = customerRepository.getReferenceById(customerId);
         Offer offer = offerRepository.getReferenceById(offerId);
         List<Long> osMappings = osmRepository.getOSMByOfferId(offerId);
+        if(customer.getValidityTill().isBefore(LocalDate.now())) {
+            return "Your subscription validity is expired, please renew your subscription";
+        }
         if(osMappings.contains(customer.getSubscriptionId())) {
             long balance = customer.getCredzyPoints() - offer.getOfferAmount();
             if(balance>=0) {
