@@ -8,6 +8,7 @@ import com.crdz.credzy.repository.CustomerRepository;
 import com.crdz.credzy.repository.OfferRepository;
 import com.crdz.credzy.repository.OfferSubscriptionMappingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -15,6 +16,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
+@Component
+@CrossOrigin(origins = "*")
 @RequestMapping(path = "offer")
 public class OfferController {
 
