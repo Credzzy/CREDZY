@@ -1,7 +1,7 @@
 package com.crdz.credzy.controller;
 
 import com.crdz.credzy.dtos.HomePageOutputDto;
-import com.crdz.credzy.services.HomePageService;
+import com.crdz.credzy.service.HomePageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;

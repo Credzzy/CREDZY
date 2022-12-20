@@ -1,4 +1,4 @@
-package com.crdz.credzy.services;
+package com.crdz.credzy.service;
 
 import com.crdz.credzy.dtos.HomePageOutputDto;
 import com.crdz.credzy.dtos.TopBrandOutputDto;
