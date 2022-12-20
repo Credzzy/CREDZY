@@ -40,7 +40,7 @@ public class CustomerService {
         Customer customer = new Customer();
         customer.setName(input.getName());
         customer.setMobileNo(input.getMobileNo());
-        customer.setValidityTill(LocalDate.now().plusDays(7));
+        customer.setSubscriptionValidityTill(LocalDate.now().plusDays(7));
         customer.setEmail(input.getEmail());
         customer.setCredzyPoints(100);
         customer.setCity(input.getCity());

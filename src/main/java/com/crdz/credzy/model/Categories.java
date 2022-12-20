@@ -4,7 +4,8 @@ package com.crdz.credzy.model;
 import lombok.Data;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDate;
 
 @Table
 @Entity
@@ -15,7 +16,7 @@ public class Categories {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private String catName;
-    private Date addedOn;
+    private LocalDate addedOn;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)

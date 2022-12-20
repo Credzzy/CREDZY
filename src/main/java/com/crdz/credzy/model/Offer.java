@@ -5,7 +5,6 @@ import lombok.Data;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Table
@@ -20,9 +19,12 @@ public class Offer {
     private String city;
     private long merchantId;
     private String offerName;
-    private String offerImg;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] offerImg;
     private long offerAmount;
     private long totalAmount;
+    private long redeemAmount;
     private LocalDate validTill;
-    private List<String> termsAndConditions;
+    private String termsAndConditions;
 }
