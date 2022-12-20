@@ -15,6 +15,7 @@ import java.util.List;
 
 @Component
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(path = "customer")
 public class CustomerController {
 
@@ -63,6 +64,7 @@ public class CustomerController {
         Customer customer = customerService.getCustomerByEmail(input.getEmail());
         try {
             emailService.sendSimpleMessage(input.getEmail(), simpleMailTemplate.getSubject(), simpleMailTemplate.getBody(otp));
+            cvService.updateCustomerVerification(customer.getId(), otp);
             loginDto.setMessage("OTP sent successfully.");
             loginDto.setCustomerId(customer.getId());
             return loginDto;

@@ -17,4 +17,11 @@ public class CustomerVerificationService {
         CustomerVerification customerVerification = cvRepo.getReferenceByCustomerId(customerId);
         return customerVerification.getOtp().equals(otp) && customerVerification.getValidTill().isAfter(LocalDateTime.now());
     }
+
+    public void updateCustomerVerification(long id, String otp) {
+        CustomerVerification cv = cvRepo.getReferenceByCustomerId(id);
+        cv.setOtp(otp);
+        cv.setValidTill(LocalDateTime.now().plusMinutes(10));
+        cvRepo.save(cv);
+    }
 }

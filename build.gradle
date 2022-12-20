@@ -14,8 +14,6 @@ repositories {
 }
 
 
-//apply plugin: 'war' ----FOR WAR file
-
 dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -30,18 +28,10 @@ dependencies {
 
 	implementation 'mysql:mysql-connector-java:8.0.23'
 
-
-//	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat' ------FOR WAR file.
+	testImplementation 'org.apache.httpcomponents:httpclient'
 
 }
 
-
-//tasks.named('test') {
-//	useJUnitPlatform()
-//}
-
-
-//----FOR WAR file
 tasks.withType(Jar).configureEach {
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

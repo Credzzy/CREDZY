@@ -3,6 +3,8 @@ package com.crdz.credzy.model;
 import lombok.Data;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Table
@@ -13,7 +15,7 @@ public class Merchants {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-    private Date addedOn;
+    private LocalDate addedOn;
     private long cityId;
     private long stateId;
     private long categoryId;
