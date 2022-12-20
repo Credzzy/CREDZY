@@ -8,9 +8,7 @@ import java.time.LocalDate;
 public class CustomerOutputDto {
 
     private String name;
-    private String mobileNo;
-    private String credzyPoints;
+    private Long credzyPoints;
     private LocalDate validityTill;
-    private String email;
 
 }

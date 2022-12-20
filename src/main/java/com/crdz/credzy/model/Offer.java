@@ -16,7 +16,7 @@ public class Offer {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private LocalDate addedOn;
-    private String city;
+    private String cityId;
     private long merchantId;
     private String offerName;
     @Lob

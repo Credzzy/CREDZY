@@ -22,6 +22,8 @@ public class Merchants {
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] logo;
+    private String benefitUpTo;
+    private boolean isTopBrand;
     private String firmName;
     private String contactPerson;
     private String facebook;

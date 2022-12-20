@@ -9,6 +9,4 @@ public class TopBrandOutputDto {
     private String firmName;
     private byte[] logo;
     private String benefitUpTo;
-    private String city;
-
 }

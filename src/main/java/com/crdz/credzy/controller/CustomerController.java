@@ -80,10 +80,8 @@ public class CustomerController {
 
     @PostMapping
     @RequestMapping(path = "/verifyOtp")
-    public boolean verifyOtp(@RequestParam Long customerId, @RequestParam String otp) {
-        Boolean otpVerified = false;
-        otpVerified = cvService.verifyOtp(customerId, otp);
-        return otpVerified;
+    public CustomerOutputDto verifyOtp(@RequestParam Long customerId, @RequestParam String otp) {
+        return cvService.verifyOtp(customerId, otp);
     }
 
     @GetMapping

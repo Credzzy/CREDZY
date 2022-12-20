@@ -12,8 +12,10 @@ public class CrazyDeals {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-    private String banLink;
-    private String crazyDealImg;
+    private long merchantId;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] crazyDealImg;
 
 //    for future enhancements
 //    private String merchantId;

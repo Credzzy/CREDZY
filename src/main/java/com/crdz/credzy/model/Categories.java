@@ -17,7 +17,7 @@ public class Categories {
     private long id;
     private String catName;
     private LocalDate addedOn;
-
+    private long cityId;
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] catImg;
