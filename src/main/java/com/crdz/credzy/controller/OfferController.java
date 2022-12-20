@@ -53,7 +53,7 @@ public class OfferController {
                 CustomerOrders customerOrders = new CustomerOrders();
                 customerOrders.setCustomerId(customerId);
                 customerOrders.setOfferId(offerId);
-                customerOrders.setValidTill(LocalDateTime.now().minusDays(1));
+                customerOrders.setValidTill(LocalDateTime.now().plusDays(1));
                 customerOrders.setOrderState("Redeem");
                 customerOrdersRepository.save(customerOrders);
                 customerRepository.save(customer);
