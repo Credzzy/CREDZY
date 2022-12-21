@@ -3,6 +3,8 @@ package com.crdz.credzy.controller;
 
 import com.crdz.credzy.dtos.*;
 import com.crdz.credzy.model.Customer;
+import com.crdz.credzy.model.CustomerOrders;
+import com.crdz.credzy.repository.CustomerOrdersRepository;
 import com.crdz.credzy.service.CustomerService;
 import com.crdz.credzy.service.CustomerVerificationService;
 import com.crdz.credzy.service.EmailService;
@@ -27,6 +29,9 @@ public class CustomerController {
 
     @Autowired
     CustomerVerificationService cvService;
+
+    @Autowired
+    CustomerOrdersRepository customerOrdersRepository;
 
     @PostMapping
     @RequestMapping(path = "/signup/getOtp")
@@ -88,5 +93,11 @@ public class CustomerController {
     @RequestMapping(path = "/get")
     public List<Customer> getCustomer() {
         return customerService.getAll();
+    }
+
+    @GetMapping
+    @RequestMapping(path = "/history")
+    public List<CustomerOrders> getHistory(@RequestParam Long customerId) {
+        return customerOrdersRepository.getAllByCustomerId(customerId);
     }
 }

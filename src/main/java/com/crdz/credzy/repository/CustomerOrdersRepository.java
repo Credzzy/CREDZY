@@ -12,4 +12,7 @@ public interface CustomerOrdersRepository extends JpaRepository<CustomerOrders, 
 
     @Query(value = "SELECT offer_id FROM customer_orders WHERE customer_id = ?1", nativeQuery = true)
     List<Long> getReferenceByCustomerId(Long customerId);
+
+    @Query(value = "SELECT * FROM customer_orders WHERE customer_id = ?1", nativeQuery = true)
+    List<CustomerOrders> getAllByCustomerId(Long customerId);
 }
