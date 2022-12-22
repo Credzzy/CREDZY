@@ -39,6 +39,8 @@ public class MerchantController {
             OfferDto offerDto = new OfferDto();
             offerDto.setOfferImg(offer.getOfferImg());
             offerDto.setOfferName(offer.getOfferName());
+            offerDto.setOfferId(offer.getId());
+            offerDto.setValidTillDate(offer.getValidTill());
             List<String> termsAndConditions = Arrays.asList(offer.getTermsAndConditions().split(","));
             offerDto.setTermsAndConditions(termsAndConditions);
             offerDtos.add(offerDto);

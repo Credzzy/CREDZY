@@ -54,4 +54,29 @@ public class HomePageService {
         return homepageDto;
     }
 
+    public HomePageOutputDto getHomePage(String city, String catName) {
+        HomePageOutputDto homepageDto = new HomePageOutputDto();
+        homepageDto.setCity(city);
+
+        Long cityId = cityRepository.getReferenceByCityName(city);
+
+        homepageDto.setCategories(null);
+
+        List<Long> merchantIds = merchantRepository.getMerchantsByCityId(cityId);
+        List<CrazyDeals> crazyDeals = crazyDealsRepository.getReferenceByMerchantIds(merchantIds);
+        homepageDto.setCrazyDeals(crazyDeals);
+
+        List<TopBrandOutputDto> topBrandOutputDtos = new ArrayList<>();
+        List<Merchants> topBrands = merchantRepository.getTopBrandsByMerchantIdsAndActive(merchantIds);
+        for(Merchants topBrand : topBrands) {
+            TopBrandOutputDto topBrandOutputDto = new TopBrandOutputDto();
+            topBrandOutputDto.setLogo(topBrand.getLogo());
+            topBrandOutputDto.setFirmName(topBrand.getFirmName());
+            topBrandOutputDto.setMerchantId(topBrand.getId());
+            topBrandOutputDto.setBenefitUpTo(topBrand.getBenefitUpTo());
+            topBrandOutputDtos.add(topBrandOutputDto);
+        }
+        homepageDto.setTopBrands(topBrandOutputDtos);
+        return homepageDto;
+    }
 }

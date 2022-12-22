@@ -22,4 +22,12 @@ public class homePageController {
         homePageOutputDto = homePageService.getHomePage(city);
         return homePageOutputDto;
     }
+
+    @GetMapping
+    @RequestMapping(path = "/category")
+    public HomePageOutputDto getHomePage(@RequestParam String city, @RequestParam String CatName) {
+        HomePageOutputDto homePageOutputDto = new HomePageOutputDto();
+        homePageOutputDto = homePageService.getHomePage(city, CatName);
+        return homePageOutputDto;
+    }
 }

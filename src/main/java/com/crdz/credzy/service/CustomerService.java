@@ -43,6 +43,7 @@ public class CustomerService {
         customer.setSubscriptionValidityTill(LocalDate.now().plusDays(7));
         customer.setEmail(input.getEmail());
         customer.setCredzyPoints(100);
+        customer.setSubscriptionId(1);
         customer.setCity(input.getCity());
         return customerRepository.save(customer);
     }
