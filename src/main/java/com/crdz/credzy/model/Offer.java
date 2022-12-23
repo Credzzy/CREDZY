@@ -19,9 +19,7 @@ public class Offer {
     private String cityId;
     private long merchantId;
     private String offerName;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] offerImg;
+    private String offerImg;
     private long offerAmount;
     private long totalAmount;
     private long redeemAmount;

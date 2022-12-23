@@ -24,18 +24,14 @@ public class homePageController {
 
     @GetMapping
     @RequestMapping(path = "/get")
-    public HomePageOutputDto getHomepage(@RequestParam String city){
-        HomePageOutputDto homePageOutputDto = new HomePageOutputDto();
-        homePageOutputDto = homePageService.getHomePage(city);
-        return homePageOutputDto;
+    public HomePageOutputDto getHomepage(@RequestParam String city) {
+        return homePageService.getHomePage(city);
     }
 
     @GetMapping
     @RequestMapping(path = "/category")
     public HomePageOutputDto getHomePage(@RequestParam String city, @RequestParam String catName) {
-        HomePageOutputDto homePageOutputDto = new HomePageOutputDto();
-        homePageOutputDto = homePageService.getHomePage(city, catName);
-        return homePageOutputDto;
+        return homePageService.getHomePage(city, catName);
     }
 
     @GetMapping

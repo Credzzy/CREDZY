@@ -13,8 +13,6 @@ public class OfferDto {
     private Long offerId;
     private String offerName;
     private List<String> termsAndConditions;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] offerImg;
+    private String offerImg;
     private LocalDate validTillDate;
 }

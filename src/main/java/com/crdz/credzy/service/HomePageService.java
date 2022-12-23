@@ -2,10 +2,7 @@ package com.crdz.credzy.service;
 
 import com.crdz.credzy.dtos.HomePageOutputDto;
 import com.crdz.credzy.dtos.TopBrandOutputDto;
-import com.crdz.credzy.model.Categories;
-import com.crdz.credzy.model.CrazyDeals;
-import com.crdz.credzy.model.Merchants;
-import com.crdz.credzy.model.TopBrands;
+import com.crdz.credzy.model.*;
 import com.crdz.credzy.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +24,9 @@ public class HomePageService {
 
     @Autowired
     CrazyDealsRepository crazyDealsRepository;
+
+    @Autowired
+    AdvertisementsRepository advertisementsRepository;
 
     public HomePageOutputDto getHomePage(String city) {
         HomePageOutputDto homepageDto = new HomePageOutputDto();
@@ -51,6 +51,11 @@ public class HomePageService {
             topBrandOutputDtos.add(topBrandOutputDto);
         }
         homepageDto.setTopBrands(topBrandOutputDtos);
+
+        List<Advertisements> ads = advertisementsRepository.findAll();
+        homepageDto.setAds(ads);
+
+
         return homepageDto;
     }
 
