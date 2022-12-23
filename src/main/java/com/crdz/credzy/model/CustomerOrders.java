@@ -17,5 +17,6 @@ public class CustomerOrders {
     private long offerId;
     private LocalDateTime validTill;
     private String orderState;
+    private String uniqueCode;
 
 }

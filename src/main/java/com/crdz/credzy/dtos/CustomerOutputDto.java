@@ -10,5 +10,6 @@ public class CustomerOutputDto {
     private String name;
     private Long credzyPoints;
     private LocalDate validityTill;
+    private String OTPVerified;
 
 }

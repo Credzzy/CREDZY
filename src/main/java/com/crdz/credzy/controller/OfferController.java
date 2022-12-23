@@ -7,6 +7,7 @@ import com.crdz.credzy.repository.CustomerOrdersRepository;
 import com.crdz.credzy.repository.CustomerRepository;
 import com.crdz.credzy.repository.OfferRepository;
 import com.crdz.credzy.repository.OfferSubscriptionMappingRepository;
+import com.crdz.credzy.service.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 @Component
@@ -58,6 +60,8 @@ public class OfferController {
                 customerOrders.setOfferId(offerId);
                 customerOrders.setValidTill(LocalDateTime.now().plusDays(1));
                 customerOrders.setOrderState("Redeem");
+                RandomString rm = new RandomString(4, ThreadLocalRandom.current());
+                customerOrders.setUniqueCode(rm.nextString());
                 customerOrdersRepository.save(customerOrders);
                 customerRepository.save(customer);
                 return "Offer Redeemed and added to your account";

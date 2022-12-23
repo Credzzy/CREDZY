@@ -3,7 +3,6 @@ package com.crdz.credzy.controller;
 
 import com.crdz.credzy.dtos.*;
 import com.crdz.credzy.model.Customer;
-import com.crdz.credzy.model.CustomerOrders;
 import com.crdz.credzy.repository.CustomerOrdersRepository;
 import com.crdz.credzy.service.CustomerService;
 import com.crdz.credzy.service.CustomerVerificationService;
@@ -97,7 +96,7 @@ public class CustomerController {
 
     @GetMapping
     @RequestMapping(path = "/history")
-    public List<CustomerOrders> getHistory(@RequestParam Long customerId) {
+    public List<CustomerOrderDto> getHistory(@RequestParam Long customerId) {
         return customerOrdersRepository.getAllByCustomerId(customerId);
     }
 }
