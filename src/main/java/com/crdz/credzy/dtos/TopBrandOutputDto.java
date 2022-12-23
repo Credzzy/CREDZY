@@ -7,6 +7,6 @@ public class TopBrandOutputDto {
 
     private long merchantId;
     private String firmName;
-    private byte[] logo;
+    private String logo;
     private String benefitUpTo;
 }
