@@ -4,6 +4,7 @@ package com.crdz.credzy.controller;
 import com.crdz.credzy.dtos.*;
 import com.crdz.credzy.model.Customer;
 import com.crdz.credzy.repository.CustomerOrdersRepository;
+import com.crdz.credzy.repository.CustomerRepository;
 import com.crdz.credzy.service.CustomerService;
 import com.crdz.credzy.service.CustomerVerificationService;
 import com.crdz.credzy.service.EmailService;
@@ -31,6 +32,9 @@ public class CustomerController {
 
     @Autowired
     CustomerOrdersRepository customerOrdersRepository;
+
+    @Autowired
+    CustomerRepository customerRepository;
 
     @PostMapping
     @RequestMapping(path = "/signup/getOtp")
@@ -89,9 +93,22 @@ public class CustomerController {
     }
 
     @GetMapping
-    @RequestMapping(path = "/get")
-    public List<Customer> getCustomer() {
+    @RequestMapping(path = "/getAll")
+    public List<Customer> getAllCustomer() {
         return customerService.getAll();
+    }
+
+
+    @GetMapping
+    @RequestMapping(path = "/get")
+    public CustomerOutputDto getCustomer(@RequestParam Long customerId) {
+        Customer customer = customerRepository.getReferenceById(customerId);
+        CustomerOutputDto customerOutputDto = new CustomerOutputDto();
+        customerOutputDto.setName(customer.getName());
+        customerOutputDto.setCredzyPoints(customer.getCredzyPoints());;
+        customerOutputDto.setValidityTill(customer.getSubscriptionValidityTill());
+        customerOutputDto.setOTPVerified(null);
+        return customerOutputDto;
     }
 
     @GetMapping
