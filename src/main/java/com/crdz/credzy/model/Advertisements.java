@@ -13,9 +13,6 @@ public class Advertisements {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private String adName;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] adsImg;
-    private String adLink;
+    private String adsImg;
 
 }
