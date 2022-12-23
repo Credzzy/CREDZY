@@ -18,9 +18,7 @@ public class Merchants {
     private long cityId;
     private long stateId;
     private long categoryId;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] logo;
+    private String  logo;
     private String benefitUpTo;
     private boolean isTopBrand;
     private String firmName;

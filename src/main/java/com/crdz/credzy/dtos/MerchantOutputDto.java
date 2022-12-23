@@ -12,7 +12,7 @@ public class MerchantOutputDto {
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
-    private byte[] logo;
+    private String logo;
     private String firmName;
     private String facebook;
     private String instagram;

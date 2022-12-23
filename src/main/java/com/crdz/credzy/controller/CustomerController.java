@@ -69,7 +69,7 @@ public class CustomerController {
         try {
             emailService.sendSimpleMessage(input.getEmail(), simpleMailTemplate.getSubject(), simpleMailTemplate.getBody(otp));
             cvService.updateCustomerVerification(customer.getId(), otp);
-            loginDto.setMessage("OTP sent successfully.");
+            loginDto.setMessage("OTP sent successfully to your Email");
             loginDto.setCustomerId(customer.getId());
             return loginDto;
 
