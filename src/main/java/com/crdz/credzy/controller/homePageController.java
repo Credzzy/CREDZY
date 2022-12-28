@@ -28,11 +28,11 @@ public class homePageController {
         return homePageService.getHomePage(city);
     }
 
-    @GetMapping
-    @RequestMapping(path = "/category")
-    public HomePageOutputDto getHomePage(@RequestParam String city, @RequestParam String catName) {
-        return homePageService.getHomePage(city, catName);
-    }
+//    @GetMapping
+//    @RequestMapping(path = "/category")
+//    public HomePageOutputDto getHomePage(@RequestParam String city, @RequestParam String catName) {
+//        return homePageService.getHomePage(city, catName);
+//    }
 
     @GetMapping
     @RequestMapping(path = "/categories")
@@ -40,5 +40,9 @@ public class homePageController {
         return merchantService.getAllMerchantsByCat(city, catId);
     }
 
-
+    @GetMapping
+    @RequestMapping(path = "/city")
+    public List<String> getAllCity() {
+        return homePageService.getAllCityName();
+    }
 }

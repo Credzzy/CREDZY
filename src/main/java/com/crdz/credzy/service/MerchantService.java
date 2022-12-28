@@ -35,12 +35,20 @@ public class MerchantService {
         return offerRepository.findAllByMerchantId(merchantId);
     }
 
-    public List<Merchants> getAllMerchants() {
-        return merchantsRepository.findAll();
+    public List<Merchants> getAllMerchants(String city) {
+        return merchantsRepository.findAllByCityId(city);
     }
 
     public List<Merchants> getAllMerchantsByCat(String city, long catId) {
         Long cityId = cityRepository.getReferenceByCityName(city);
         return merchantsRepository.findAllByCityIdAndCategoryId(cityId, catId);
+    }
+
+    public Merchants merchantLogin(String merchantUsername, String password) {
+        Merchants merchant = merchantsRepository.getReferenceByMerchantId(merchantUsername);
+        if(merchant.getPassword().equals(password)) {
+            return merchant;
+        }
+        return null;
     }
 }

@@ -18,5 +18,7 @@ public class CustomerOrders {
     private LocalDateTime validTill;
     private String orderState;
     private String uniqueCode;
-
+    private String merchantName;
+    private long merchantId;
+    private LocalDateTime orderTime;
 }

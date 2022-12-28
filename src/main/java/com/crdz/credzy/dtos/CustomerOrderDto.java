@@ -9,4 +9,7 @@ public interface CustomerOrderDto {
     String getUniqueCode();
     LocalDateTime getValidTill();
     String getOrderState();
+    String getMerchantName();
+    String getOrderTime();
+    String getCustomerName();
 }

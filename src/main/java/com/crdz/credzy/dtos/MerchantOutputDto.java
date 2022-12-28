@@ -1,8 +1,5 @@
 package com.crdz.credzy.dtos;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Lob;
 import lombok.Data;
 
 import java.util.List;
@@ -10,8 +7,6 @@ import java.util.List;
 @Data
 public class MerchantOutputDto {
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
     private String logo;
     private String firmName;
     private String facebook;

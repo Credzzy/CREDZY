@@ -84,4 +84,8 @@ public class HomePageService {
         homepageDto.setTopBrands(topBrandOutputDtos);
         return homepageDto;
     }
+
+    public List<String> getAllCityName() {
+        return cityRepository.findAllCityName();
+    }
 }

@@ -15,4 +15,6 @@ public interface MerchantRepository extends JpaRepository<Merchants, Long> {
     @Query(value = "SELECT * FROM merchants WHERE id in ?1 AND is_top_brand = true", nativeQuery = true)
     List<Merchants> getTopBrandsByMerchantIdsAndActive(List<Long> merchantIds);
 
+    @Query(value = "SELECT firm_name FROM merchants WHERE id = ?1", nativeQuery = true)
+    String getMerchantNameById(long merchantId);
 }

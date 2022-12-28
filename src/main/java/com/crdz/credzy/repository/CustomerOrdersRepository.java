@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -14,10 +15,25 @@ public interface CustomerOrdersRepository extends JpaRepository<CustomerOrders, 
     @Query(value = "SELECT offer_id FROM customer_orders WHERE customer_id = ?1", nativeQuery = true)
     List<Long> getReferenceByCustomerId(Long customerId);
 
-    @Query(value = "SELECT o.id as orderId, o.offer_name as OfferName," +
+    @Query(value = "SELECT co.id as orderId, o.offer_name as OfferName," +
             " co.unique_code as uniqueCode, co.valid_till as validTill," +
-            " co.order_state as orderState" +
+            " co.order_state as orderState," +
+            " co.merchant_name as merchantName," +
+            " co.order_time as orderTime" +
             " FROM ebdb.customer_orders co join offer o" +
             " WHERE co.offer_id = o.id AND customer_id = ?1", nativeQuery = true)
     List<CustomerOrderDto> getAllByCustomerId(Long customerId);
+
+    @Query(value = "select count(*) from customer_orders " +
+            "where merchant_id = ?1 and customer_id = ?2 and valid_till < ?3", nativeQuery = true)
+    Long getOrderOfCustomerByMerchant(Long customerId, Long merchantId, LocalDateTime date);
+
+    @Query(value = "SELECT co.id as orderId, o.offer_name as OfferName," +
+            " co.unique_code as uniqueCode, co.valid_till as validTill," +
+            " co.order_state as orderState, co.order_time as orderTime," +
+            " c.name as customerName" +
+            " FROM customer_orders co  join offer o join customer c" +
+            " WHERE co.offer_id = o.id  AND co.customer_id = c.id" +
+            " AND co.unique_code = ?1 AND co.merchant_id = ?2", nativeQuery = true)
+    CustomerOrderDto findByUniqueCodeAndMerchantId(String uniqueCode, Long merchantId);
 }

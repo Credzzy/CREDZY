@@ -9,4 +9,8 @@ import java.util.List;
 @Repository
 public interface MerchantsRepository extends JpaRepository<Merchants, Long> {
     List<Merchants> findAllByCityIdAndCategoryId(long city, long catId);
+
+    Merchants getReferenceByMerchantId(String merchantId);
+
+    List<Merchants> findAllByCityId(String city);
 }

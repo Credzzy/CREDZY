@@ -1,5 +1,6 @@
 package com.crdz.credzy.controller;
 
+import com.crdz.credzy.dtos.LoginDto;
 import com.crdz.credzy.dtos.MerchantOutputDto;
 import com.crdz.credzy.dtos.OfferDto;
 import com.crdz.credzy.model.Merchants;
@@ -64,9 +65,21 @@ public class MerchantController {
 
     @GetMapping
     @RequestMapping(path = "/all")
-    public List<Merchants> getAllMerchants() {
-        return merchantService.getAllMerchants();
+    public List<Merchants> getAllMerchants(@RequestParam String city) {
+        return merchantService.getAllMerchants(city);
     }
 
-
+    @PostMapping
+    @RequestMapping(path = "login")
+    public LoginDto merchantLogin(@RequestParam String merchantUsername, @RequestParam String password) {
+        LoginDto loginDto = new LoginDto();
+        Merchants merchant = merchantService.merchantLogin(merchantUsername,password);
+        if(merchant != null ) {
+            loginDto.setMessage("Login successful");
+            loginDto.setCustomerId(merchant.getId());
+            return loginDto;
+        }
+        loginDto.setMessage("Login Failed");
+        return loginDto;
+    }
 }

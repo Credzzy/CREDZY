@@ -29,4 +29,6 @@ public class Merchants {
     private String whatsapp;
     private String address;
     private String gmap;
+    private String password;
+    private String merchantId;
 }
