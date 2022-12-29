@@ -12,5 +12,5 @@ public interface MerchantsRepository extends JpaRepository<Merchants, Long> {
 
     Merchants getReferenceByMerchantId(String merchantId);
 
-    List<Merchants> findAllByCityId(String city);
+    List<Merchants> findAllByCityId(Long city);
 }

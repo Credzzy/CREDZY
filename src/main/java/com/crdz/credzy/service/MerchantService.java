@@ -36,7 +36,8 @@ public class MerchantService {
     }
 
     public List<Merchants> getAllMerchants(String city) {
-        return merchantsRepository.findAllByCityId(city);
+        Long cityId = cityRepository.getReferenceByCityName(city);
+        return merchantsRepository.findAllByCityId(cityId);
     }
 
     public List<Merchants> getAllMerchantsByCat(String city, long catId) {
