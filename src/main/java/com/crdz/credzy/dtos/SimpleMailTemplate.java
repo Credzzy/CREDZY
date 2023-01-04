@@ -14,7 +14,7 @@ public class SimpleMailTemplate {
 
 
     public String getBody(String otp) {
-        return "Hi, \n\n Here is your OTP for login in " + otp + " \n\n Thank you for choosing Credzy.";
+        return "Hi, \n\n Here is your OTP to login: " + otp + " \n\n Thank you for choosing Credzy.";
     }
 
     public String otpGenerator() {
