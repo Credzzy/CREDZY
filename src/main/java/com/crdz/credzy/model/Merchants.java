@@ -31,4 +31,5 @@ public class Merchants {
     private String gmap;
     private String password;
     private String merchantId;
+    private String TopBrandImg;
 }

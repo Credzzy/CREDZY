@@ -44,7 +44,7 @@ public class HomePageService {
         List<Merchants> topBrands = merchantRepository.getTopBrandsByMerchantIdsAndActive(merchantIds);
         for(Merchants topBrand : topBrands) {
             TopBrandOutputDto topBrandOutputDto = new TopBrandOutputDto();
-            topBrandOutputDto.setLogo(topBrand.getLogo());
+            topBrandOutputDto.setLogo(topBrand.getTopBrandImg());
             topBrandOutputDto.setFirmName(topBrand.getFirmName());
             topBrandOutputDto.setMerchantId(topBrand.getId());
             topBrandOutputDto.setBenefitUpTo(topBrand.getBenefitUpTo());
