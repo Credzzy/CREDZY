@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -40,6 +41,8 @@ public class OfferController {
 
     @Autowired
     MerchantRepository merchantRepository;
+
+    ZoneId zid = ZoneId.of("Asia/Kolkata");
 
     @PostMapping
     @RequestMapping(path = "/grab")
@@ -101,6 +104,12 @@ public class OfferController {
     @RequestMapping(path = "/delivered")
     public CustomerOrders updateCustomerOrder(@RequestParam Long customerOrderId) {
         CustomerOrders customerOrders = customerOrdersRepository.getReferenceById(customerOrderId);
+        long merchantId = customerOrders.getMerchantId();
+        long customerId = customerOrders.getCustomerId();
+        if (customerOrdersRepository.getCountOfOrderInLast15H(customerId, merchantId) > 0) {
+            return null;
+        }
+        customerOrders.setRedeemTime(LocalDateTime.now(zid));
         customerOrders.setOrderState("Availed");
         return customerOrdersRepository.save(customerOrders);
     }

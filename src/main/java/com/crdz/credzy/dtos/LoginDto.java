@@ -7,4 +7,5 @@ public class LoginDto {
 
     private String message;
     private long customerId;
+    private String merchantName;
 }

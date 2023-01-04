@@ -1,5 +1,6 @@
 package com.crdz.credzy.controller;
 
+import com.crdz.credzy.dtos.CustomerOrderDto;
 import com.crdz.credzy.dtos.LoginDto;
 import com.crdz.credzy.dtos.MerchantOutputDto;
 import com.crdz.credzy.dtos.OfferDto;
@@ -29,7 +30,7 @@ public class MerchantController {
     @RequestMapping(path = "/id")
     public MerchantOutputDto getMerchant(@RequestParam Long merchantId) {
         Merchants merchants = merchantService.getMerchantByID(merchantId);
-        List<Offer> offers = merchantService.getofferbyMerchantId(merchantId);
+        List<Offer> offers = merchantService.getOfferByMerchantId(merchantId);
         List<OfferDto> offerDtos = createOfferDto(offers);
         return createMerchantDto(merchants, offerDtos);
     }
@@ -77,9 +78,16 @@ public class MerchantController {
         if(merchant != null ) {
             loginDto.setMessage("Login successful");
             loginDto.setCustomerId(merchant.getId());
+            loginDto.setMerchantName(merchant.getFirmName());
             return loginDto;
         }
         loginDto.setMessage("Login Failed");
         return loginDto;
+    }
+
+    @GetMapping
+    @RequestMapping(path = "/upcoming")
+    public List<CustomerOrderDto> upcomingOrders(@RequestParam Long merchantId) {
+        return merchantService.getUpcomingOrder(merchantId);
     }
 }

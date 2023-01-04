@@ -21,4 +21,5 @@ public class CustomerOrders {
     private String merchantName;
     private long merchantId;
     private LocalDateTime orderTime;
+    private LocalDateTime redeemTime;
 }

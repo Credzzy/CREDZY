@@ -1,11 +1,9 @@
 package com.crdz.credzy.service;
 
+import com.crdz.credzy.dtos.CustomerOrderDto;
 import com.crdz.credzy.model.Merchants;
 import com.crdz.credzy.model.Offer;
-import com.crdz.credzy.repository.CategoriesRepository;
-import com.crdz.credzy.repository.CityRepository;
-import com.crdz.credzy.repository.MerchantsRepository;
-import com.crdz.credzy.repository.OfferRepository;
+import com.crdz.credzy.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,12 +24,15 @@ public class MerchantService {
     @Autowired
     CityRepository cityRepository;
 
+    @Autowired
+    CustomerOrdersRepository customerOrdersRepository;
+
     public Merchants getMerchantByID(Long merchantId) {
         return merchantsRepository.getReferenceById(merchantId);
     }
 
 
-    public List<Offer> getofferbyMerchantId(Long merchantId) {
+    public List<Offer> getOfferByMerchantId(Long merchantId) {
         return offerRepository.findAllByMerchantId(merchantId);
     }
 
@@ -51,5 +52,9 @@ public class MerchantService {
             return merchant;
         }
         return null;
+    }
+
+    public List<CustomerOrderDto> getUpcomingOrder(Long merchantId) {
+        return customerOrdersRepository.getOrderByMerchant(merchantId);
     }
 }
