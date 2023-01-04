@@ -22,7 +22,7 @@ public interface CustomerOrdersRepository extends JpaRepository<CustomerOrders, 
             " co.order_time as orderTime" +
             " FROM ebdb.customer_orders co join offer o" +
             " WHERE co.offer_id = o.id AND customer_id = ?1" +
-            " order by order_time", nativeQuery = true)
+            " ORDER BY order_time DESC", nativeQuery = true)
     List<CustomerOrderDto> getAllByCustomerId(Long customerId);
 
     @Query(value = "SELECT co.id as orderId, o.offer_name as OfferName," +
