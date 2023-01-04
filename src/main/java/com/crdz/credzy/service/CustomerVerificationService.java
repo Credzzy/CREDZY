@@ -27,6 +27,7 @@ public class CustomerVerificationService {
             customerOutputDto.setName(customer.getName());
             customerOutputDto.setCredzyPoints(customer.getCredzyPoints());;
             customerOutputDto.setValidityTill(customer.getSubscriptionValidityTill());
+            customerOutputDto.setCity(customer.getCity());
             customerOutputDto.setOTPVerified("OTP verified");
             return customerOutputDto;
         }
