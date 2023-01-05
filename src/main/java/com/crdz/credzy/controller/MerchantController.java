@@ -90,4 +90,10 @@ public class MerchantController {
     public List<CustomerOrderDto> upcomingOrders(@RequestParam Long merchantId) {
         return merchantService.getUpcomingOrder(merchantId);
     }
+
+    @GetMapping
+    @RequestMapping(path = "/past")
+    public List<CustomerOrderDto> pastOrders(@RequestParam Long merchantId) {
+        return merchantService.getPastOrder(merchantId);
+    }
 }

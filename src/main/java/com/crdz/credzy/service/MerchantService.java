@@ -55,6 +55,10 @@ public class MerchantService {
     }
 
     public List<CustomerOrderDto> getUpcomingOrder(Long merchantId) {
-        return customerOrdersRepository.getOrderByMerchant(merchantId);
+        return customerOrdersRepository.getUpcomingOrderByMerchant(merchantId);
+    }
+
+    public List<CustomerOrderDto> getPastOrder(Long merchantId) {
+        return customerOrdersRepository.getPastOrderByMerchant(merchantId);
     }
 }

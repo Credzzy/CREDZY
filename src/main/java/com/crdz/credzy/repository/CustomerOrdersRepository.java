@@ -33,7 +33,7 @@ public interface CustomerOrdersRepository extends JpaRepository<CustomerOrders, 
             " WHERE co.offer_id = o.id  AND co.customer_id = c.id" +
             " AND co.merchant_id = ?1 AND co.order_state = 'Redeem'" +
             " ORDER BY co.order_time DESC", nativeQuery = true)
-    List<CustomerOrderDto> getOrderByMerchant(Long merchantId);
+    List<CustomerOrderDto> getUpcomingOrderByMerchant(Long merchantId);
 
     @Query(value = "SELECT co.id as orderId, o.offer_name as OfferName," +
             " co.unique_code as uniqueCode, co.valid_till as validTill," +
@@ -50,4 +50,14 @@ public interface CustomerOrdersRepository extends JpaRepository<CustomerOrders, 
             " and order_state = 'Availed'" +
             " and redeem_time >= date_sub(convert_tz(now(),'+00:00','+05:30'), INTERVAL 15 hour)", nativeQuery = true)
     int getCountOfOrderInLast15H(long customerId, long merchantId);
+
+    @Query(value = "SELECT co.id as orderId, o.offer_name as OfferName," +
+            " co.unique_code as uniqueCode, co.valid_till as validTill," +
+            " co.order_state as orderState, co.order_time as orderTime," +
+            " c.name as customerName" +
+            " FROM customer_orders co  join offer o join customer c" +
+            " WHERE co.offer_id = o.id  AND co.customer_id = c.id" +
+            " AND co.merchant_id = ?1 AND co.order_state != 'Redeem'" +
+            " ORDER BY co.order_time DESC", nativeQuery = true)
+    List<CustomerOrderDto> getPastOrderByMerchant(Long merchantId);
 }
