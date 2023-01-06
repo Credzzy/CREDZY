@@ -40,9 +40,9 @@ public class CustomerService {
         Customer customer = new Customer();
         customer.setName(input.getName());
         customer.setMobileNo(input.getMobileNo());
-        customer.setSubscriptionValidityTill(LocalDate.now().plusDays(7));
+        customer.setSubscriptionValidityTill(LocalDate.now().plusDays(15));
         customer.setEmail(input.getEmail());
-        customer.setCredzyPoints(100);
+        customer.setCredzyPoints(500);
         customer.setSubscriptionId(1);
         customer.setCity(input.getCity());
         return customerRepository.save(customer);
